@@ -1,0 +1,133 @@
+# CleanMac Default Configuration File
+# Copy this to ~/.cleanmac/config.yml and customize as needed
+
+# General Settings
+settings:
+  confirm_prompts: true
+  show_disk_usage: true
+  color_output: true
+  backup_before_cleanup: false
+  max_file_age_days: null  # null = delete all, or set number of days
+  dry_run_first: false     # Suggest dry-run before actual deletion
+
+# Scan Paths
+scan_paths:
+  enabled: true
+  default_paths:
+    - "~/Desktop"
+    - "~/Documents"
+    - "~/Projects"
+  excluded_paths:
+    - "~/Documents/Important"
+    - "~/Desktop/Active Work"
+  max_depth: 5  # How deep to scan in directory tree
+  follow_symlinks: false
+
+# Cleanup Presets
+presets:
+  web-dev:
+    - node_modules
+    - npm_cache
+    - yarn_cache
+    - pnpm_cache
+    - next_cache
+    - nuxt_cache
+    
+  mobile-dev:
+    - xcode
+    - cocoapods
+    - android_gradle
+    
+  docker-dev:
+    - docker
+    - kubernetes
+    
+  full:
+    - all  # All categories in safe mode
+
+# Custom Rules
+custom_rules:
+  - name: "Old Build Artifacts"
+    paths:
+      - "~/Projects/**/build"
+      - "~/Projects/**/dist"
+    max_age_days: 7
+    min_size: "10MB"
+    
+  - name: "Test Coverage Reports"
+    paths:
+      - "~/Projects/**/coverage"
+      - "~/Projects/**/.nyc_output"
+    max_age_days: 30
+    
+  - name: "Stale Node Modules on Desktop"
+    paths:
+      - "~/Desktop/**/node_modules"
+    max_age_days: 30
+    min_size: "100MB"
+    confirm_each: true
+
+# Exclusions (never delete)
+exclusions:
+  paths:
+    - "~/Projects/important-client/**"
+    - "~/Documents/Backup/**"
+  
+  patterns:
+    - "*.env"
+    - "*.env.local"
+    - "*.key"
+    - "*.pem"
+    - "*.cert"
+    - "*.p12"
+    - "*.config.js"
+    - "*.config.ts"
+  
+  # Protect recently modified files
+  protect_recent:
+    enabled: true
+    threshold_days: 7  # Don't delete files modified in last 7 days
+    show_warning: true
+
+# Size Thresholds
+size_thresholds:
+  large_file_warning: "1GB"
+  total_cleanup_warning: "50GB"
+  min_cleanup_size: "10MB"  # Don't bother with tiny files
+
+# Safety Settings
+safety:
+  require_confirmation: true
+  show_file_list: true  # Always show what will be deleted
+  max_files_per_operation: 10000  # Safety limit
+  
+# Performance Settings
+performance:
+  parallel_deletion: false  # Enable parallel deletion
+  max_threads: 4
+  use_cache: true  # Use cached directory sizes
+  cache_expiry_hours: 6
+
+# Transparency & Reporting
+transparency:
+  show_size_before_delete: true
+  show_file_count: true
+  show_last_modified: true
+  log_all_operations: true
+  save_deleted_manifest: true
+  manifest_path: "~/.cleanmac/manifests/"
+  
+# Notifications
+notifications:
+  desktop_notification: false  # Requires terminal-notifier
+  sound_on_complete: false
+  slack_webhook: null  # Optional: webhook URL
+
+# Scheduled Cleanup
+schedule:
+  enabled: false
+  frequency: "weekly"  # daily, weekly, monthly
+  day: "sunday"
+  time: "03:00"
+  preset: "web-dev"
+  skip_if_disk_usage_below: 70  # Only run if disk usage > 70%

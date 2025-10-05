@@ -1,5 +1,14 @@
 ## 🧹 CleanMac — Ultimate macOS Cleanup CLI Tool
 
+[![Visitors](https://api.visitorbadge.io/api/combined?path=https%3A%2F%2Fgithub.com%2Fshade-solutions%2Fcleanmac&countColor=%23263759&style=flat-square)](https://visitorbadge.io/status?path=https%3A%2F%2Fgithub.com%2Fshade-solutions%2Fcleanmac)
+[![GitHub stars](https://img.shields.io/github/stars/shade-solutions/cleanmac)](https://github.com/shade-solutions/cleanmac/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/shade-solutions/cleanmac)](https://github.com/shade-solutions/cleanmac/network)
+[![GitHub issues](https://img.shields.io/github/issues/shade-solutions/cleanmac)](https://github.com/shade-solutions/cleanmac/issues)
+[![GitHub license](https://img.shields.io/github/license/shade-solutions/cleanmac)](https://github.com/shade-solutions/cleanmac/blob/main/LICENSE)
+[![GitHub release](https://img.shields.io/github/v/release/shade-solutions/cleanmac)](https://github.com/shade-solutions/cleanmac/releases)
+[![Bash](https://img.shields.io/badge/Made%20with-Bash-1f425f.svg)](https://www.gnu.org/software/bash/)
+[![macOS](https://img.shields.io/badge/platform-macOS-lightgrey)](https://www.apple.com/macos/)
+
 **Author:** [Shaswat Raj (Shade Solutions)](https://github.com/shade-solutions)
 **License:** MIT
 **Platform:** macOS (Intel, M1, M2, M3)
