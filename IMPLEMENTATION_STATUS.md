@@ -9,12 +9,12 @@
 
 | Phase | Status | Progress | Issues Closed |
 |-------|--------|----------|---------------|
-| Phase 1: Foundation & Safety | 🟡 In Progress | 20% | 1/6 |
+| Phase 1: Foundation & Safety | 🟡 In Progress | 40% | 2/6 |
 | Phase 2: Transparency & Control | 📋 Not Started | 0% | 0/4 |
 | Phase 3: CLI Flags & Automation | 📋 Not Started | 0% | 0/4 |
 | Phase 4: Smart Features | 📋 Not Started | 0% | 0/3 |
 | Phase 5: Performance | 📋 Not Started | 0% | 0/3 |
-| **TOTAL** | **🟡** | **4%** | **1/21** |
+| **TOTAL** | **🟡** | **9.5%** | **2/21** |
 
 ---
 
@@ -51,17 +51,30 @@
 
 ### Phase 1: Foundation & Safety
 
-#### Issue #6: Path-Specific Scanning
-**Status:** Open  
-**Priority:** HIGH  
-**Estimated Time:** 2-3 days
+#### ✅ Issue #6: Path-Specific Scanning (COMPLETED)
+**Status:** Closed  
+**Commit:** [355c7dd](https://github.com/shade-solutions/cleanmac/commit/355c7dd)
 
-**TODO:**
-- [ ] Implement `--path` flag parsing
-- [ ] Add `--recursive` flag
-- [ ] Implement `--depth` limit
-- [ ] Support multiple paths
-- [ ] Test with various directory structures
+**Implemented:**
+- ✅ Created `lib/args.sh` with comprehensive argument parsing
+- ✅ Implemented `--path`, `--paths`, `--depth`, `--no-recursive` flags
+- ✅ Added filtering options: `--only`, `--exclude`, `--max-age`, `--min-size`
+- ✅ Created `lib/scanner.sh` for intelligent scanning
+- ✅ Supports 22+ common cleanup targets
+- ✅ Depth limiting and recursive scanning
+- ✅ Bash 3.2 compatible for macOS
+- ✅ Created comprehensive test suite (17 tests, all passing)
+
+**Examples:**
+```bash
+cleanmac --path ~/Desktop --only node_modules --max-age 30
+cleanmac --paths ~/Projects,~/Desktop --depth 2
+cleanmac --dry-run --only cache,logs --min-size 100MB
+```
+
+---
+
+## 🔄 In Progress
 
 #### Issue #7: Age & Size-Based Filtering
 **Status:** Open  
@@ -69,11 +82,12 @@
 **Estimated Time:** 2-3 days
 
 **TODO:**
-- [ ] Implement `--max-age` flag
-- [ ] Implement `--min-size` flag
-- [ ] Combine filters logic
+- [x] Implement `--max-age` flag (done in #6)
+- [x] Implement `--min-size` flag (done in #6)
+- [ ] Add comprehensive age/size filtering tests
 - [ ] Add filter status in output
 - [ ] Test edge cases
+- [ ] Document filtering behavior
 
 #### Issue #8: Dry-Run Mode
 **Status:** Open  
@@ -81,7 +95,7 @@
 **Estimated Time:** 2 days
 
 **TODO:**
-- [ ] Add `--dry-run` flag
+- [x] Add `--dry-run` flag (done in #6)
 - [ ] Skip all deletions in dry-run
 - [ ] Show accurate preview
 - [ ] Calculate space savings
