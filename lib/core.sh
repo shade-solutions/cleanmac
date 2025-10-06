@@ -5,6 +5,9 @@
 # Provides core utilities and helper functions
 ################################################################################
 
+# Mark core as loaded to prevent circular dependencies
+export CLEANMAC_CORE_LOADED=1
+
 # Color codes for terminal output
 RED='\033[0;31m'
 GREEN='\033[0;32m'
